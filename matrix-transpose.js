@@ -18,7 +18,10 @@ function transpose_matrix(){
 });
 transpose_matrix();
 document.getElementById("mat-transpose-btn").addEventListener("click",async ()=>{
-    document.getElementById("mat-transpose-btn").disabled=true;
+    ["mat-transpose-in1","mat-transpose-in2","mat-transpose-btn"].forEach(id=>document.getElementById(id).disabled=true);
+    const t=document.getElementById("mat-transpose-in2").value;
+    document.getElementById("mat-transpose-in2").value=document.getElementById("mat-transpose-in1").value;
+    document.getElementById("mat-transpose-in1").value=t;
     await t_mat.transpose();
-    document.getElementById("mat-transpose-btn").disabled=false;
+    ["mat-transpose-in1","mat-transpose-in2","mat-transpose-btn"].forEach(id=>document.getElementById(id).disabled=false);
 })

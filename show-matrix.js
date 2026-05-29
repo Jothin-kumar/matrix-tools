@@ -44,9 +44,16 @@ class Matrix {
         return this.matrix[i][j];
     }
     set(i,j,v) {
+        const prev=this.matrix[i][j];
         this.matrix[i][j]=v;
         this.e.children[i].children[j].value=v;
         this.e.children[i].children[j].innerText=v;
+        if (prev!=v) {
+            this.select(i,j);
+            setTimeout(()=>{
+                this.unselect(i,j);
+            },500);
+        }
     }
     select(i,j) {
         this.e.children[i].children[j].classList.add("selected");

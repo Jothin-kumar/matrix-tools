@@ -21,10 +21,10 @@ class Matrix {
                 r_.appendChild(s);
                 if (editable) {
                     s.addEventListener("change",()=>{
-                        let v=parseInt(s.value)%prime;
+                        let v=parseInt(s.value)%mod;
                         if (v !=NaN) {
-                            while (v<0) v+=prime;
-                            v%=prime;
+                            while (v<0) v+=mod;
+                            v%=mod;
                             this.set(i,j,v)
                             editCallback();
                         }

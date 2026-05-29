@@ -6,18 +6,60 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Matrix Tools</title>
     <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="matrix.css">
+    <link rel="stylesheet" href="matrix-multiplication.css">
 </head>
 
 <body>
     <ul id="op-chooser">
-        <li class="active">Multiplication</li>
+        <li class="active">Matrix Multiplication</li>
         <li>Determinant</li>
         <li>Adjoint</li>
         <li>Inverse</li>
     </ul>
     <main id="ops">
-        <div class="active">
+        <div id="matrix-multiplication" class="active">
             <h2>Multiplication</h2>
+            <div id="mat-mul-matrices-parent">
+                <div id="mul-mat-a"></div>
+                <span>&Cross;</span>
+            <div id="mul-mat-b"></div>
+            <span>&equals;</span>
+            <div id="mul-mat-res"></div>
+            </div>
+            <button id="mat-mul-animate">Animate!</button>
+            <p>
+                In the first 2 matrices, you can click on a value to edit it. During calculation, modulo 67 is done to avoid large numbers. For example, if the value is 68, 1 is displayed instead
+            </p>
+            <form id="mat-mul-form">
+                <div>
+                    <label>Row count of first matrix:</label>
+                    <select id="mat-mul-in1">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3" selected>3</option>
+                        <option value="4">4</option>
+                    </select>
+                </div>
+                <div>
+                    <label>Column count of first matrix / Row count of second matrix:</label>
+                    <select id="mat-mul-in2">
+                        <option value="1">1</option>
+                        <option value="2" selected>2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                    </select>
+                </div>
+                <div>
+                    <label>Column count of second matrix:</label>
+                    <select id="mat-mul-in3">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3" selected>3</option>
+                        <option value="4">4</option>
+                    </select>
+                </div>
+            </form>
         </div>
         <div>
             <h2>Determinant</h2>
@@ -30,6 +72,8 @@
         </div>
     </main>
     <script src="main.js"></script>
+    <script src="show-matrix.js"></script>
+    <script src="matrix-multiplication.js"></script>
 </body>
 
 </html>

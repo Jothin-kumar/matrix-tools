@@ -24,4 +24,4 @@ window.addEventListener("TabChange",()=>{
         }
     }
 });
-const prime=97
+const prime=9973

@@ -55,7 +55,7 @@
 
             &.selected {
                 font-weight: bold;
-                color: red;
+                color: orange;
             }
             &:focus {
                 scale: 1.2;

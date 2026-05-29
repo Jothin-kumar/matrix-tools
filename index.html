@@ -11,13 +11,14 @@
 </head>
 
 <body>
-    <ul id="op-chooser">
+    <p class="show-on-portrait">Not available on portrait. Switch to landscape mode pls :-)</p>
+    <ul id="op-chooser" class="hide-on-portrait">
         <li class="active">Matrix Multiplication</li>
         <li>Determinant</li>
         <li>Adjoint</li>
         <li>Inverse</li>
     </ul>
-    <main id="ops">
+    <main id="ops" class="hide-on-portrait">
         <div id="matrix-multiplication" class="active">
             <h2>Multiplication</h2>
             <div id="mat-mul-matrices-parent">

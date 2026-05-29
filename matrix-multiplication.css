@@ -5,6 +5,16 @@
     align-items: center;
     justify-content: center;
 }
+@media screen and (max-width:1200px) {
+    #mat-mul-matrices-parent{
+    scale: .6;
+    }
+}
+@media screen and (max-width:900px) {
+    #mat-mul-matrices-parent{
+    scale: .5;
+    }
+}
 #mat-mul-animate {
     font-size: large;
     margin-top: 20px;

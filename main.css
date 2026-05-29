@@ -77,3 +77,19 @@ body>* {
     }
     max-width: 95dvw;
 }
+
+.show-on-portrait {
+    display: none;
+}
+@media screen and (orientation: portrait) {
+    .show-on-portrait {
+        display: block;
+        text-align: center;
+        margin: 10px;
+        font-family: monospace;
+        font-size: larger;
+    }
+    .hide-on-portrait {
+        display: none !important;
+    }
+}

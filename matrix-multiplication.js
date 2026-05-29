@@ -36,7 +36,8 @@ class Clone {
 }
 function mergeClones(c1,c2) {
     const f=()=>{
-        const mid=(c1.clone.getBoundingClientRect().left+c2.clone.getBoundingClientRect().left)/2;
+        let mid=(c1.elem.parentElement.parentElement.getBoundingClientRect().right+c2.elem.parentElement.parentElement.getBoundingClientRect().left)/2;
+        mid-=(c1.clone.getBoundingClientRect().width/2);
         c1.clone.style.marginLeft=(parseInt(c1.clone.style.marginLeft || 0)-(c1.clone.getBoundingClientRect().left-mid))+"px";
         c2.clone.style.marginLeft=(parseInt(c2.clone.style.marginLeft || 0)+(mid-c2.clone.getBoundingClientRect().left))+"px";
         if (c1.timeout || c2.timeout) {

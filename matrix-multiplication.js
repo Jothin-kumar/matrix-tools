@@ -1,3 +1,51 @@
+class Clone {
+    constructor(elem) {
+        this.elem=elem;
+        this.clone=document.createElement("span");
+        this.clone.classList.add("clone");
+        this.clone.style.position="absolute";
+        this.clone.style.pointerEvents="none";
+        this.clone.style.zIndex=1000;
+        this.clone.style.display="flex";
+        this.clone.style.alignItems="center";
+        this.clone.style.justifyContent="center";
+        this.clone.innerText=elem.value;
+        this.update();
+        document.body.appendChild(this.clone);
+        // window.addEventListener("resize",()=>{
+        //     setTimeout(()=>this.update,100)
+        // });
+        this.clone.style.backgroundColor="rgba(18, 46, 15, 1)"
+        this.clone.style.borderRadius="10px"
+    }
+    update(){
+        const bcr=this.elem.getBoundingClientRect();
+        this.clone.style.width=bcr.width+"px";
+        this.clone.style.height=bcr.height+"px";
+        this.clone.style.left=bcr.left+"px";
+        this.clone.style.top=bcr.top+"px";
+        this.clone.style.font=window.getComputedStyle(this.elem).font;
+        this.clone.style.fontSize=window.getComputedStyle(this.elem).fontSize;
+        this.timeout=setTimeout(()=>this.update(),100);
+    }
+    kill(){
+        document.body.removeChild(this.clone);
+        clearTimeout(this.timeout);
+        this.timeout=null;
+    }
+}
+function mergeClones(c1,c2) {
+    const f=()=>{
+        const mid=(c1.clone.getBoundingClientRect().left+c2.clone.getBoundingClientRect().left)/2;
+        c1.clone.style.marginLeft=(parseInt(c1.clone.style.marginLeft || 0)-(c1.clone.getBoundingClientRect().left-mid))+"px";
+        c2.clone.style.marginLeft=(parseInt(c2.clone.style.marginLeft || 0)+(mid-c2.clone.getBoundingClientRect().left))+"px";
+        if (c1.timeout || c2.timeout) {
+            setTimeout(f,100);
+        }
+    }
+    f();
+}
+
 function compute_mul(){
     const m=parseInt(document.getElementById("mat-mul-in1").value);
     const n=parseInt(document.getElementById("mat-mul-in2").value);
@@ -67,19 +115,45 @@ document.getElementById("mat-mul-animate").addEventListener("click",async ()=>{
             let lol=0;
             mul_matRes.highlight(i,j);
             await new Promise(r=>setTimeout(r,1000));
+            const Avals=[]
+            const Bvals=[]
             for (let k=0;k<n;k++){
                 mul_matA.highlight(i,k);
                 mul_matB.highlight(k,j);
+                Avals.push(new Clone(mul_matA.e.children[i].children[k]));
+                Bvals.push(new Clone(mul_matB.e.children[k].children[j]));
                 lol+=(mul_matA.get(i,k)*mul_matB.get(k,j))%prime
                 lol%=prime
             }
+            await new Promise(r=>setTimeout(r,2000));
+            for (let k=0;k<n;k++){
+                mergeClones(Avals[k],Bvals[k]);
+            }
             await new Promise(r=>setTimeout(r,1000));
-            mul_matRes.set(i,j,lol);
+            for (let k=0;k<n;k++){
+                const h=(mul_matA.get(i,k)*mul_matB.get(k,j))%prime;
+                Avals[k].clone.innerText=h;
+                Bvals[k].clone.innerText=h;
+                Avals[k].clone.style.color="orange";
+                Bvals[k].clone.style.color="orange";
+                setTimeout(()=>Avals[k].clone.style.color="white",2000);
+                setTimeout(()=>Bvals[k].clone.style.color="white",2000);
+            }
+            await new Promise(r=>setTimeout(r,3500));
             for (let k=0;k<n;k++){
                 mul_matA.unhighlight(i,k);
                 mul_matB.unhighlight(k,j);
             }
+            await new Promise(r=>setTimeout(r,2000));
+            mul_matRes.set(i,j,lol);
             mul_matRes.unhighlight(i,j);
+            await new Promise(r=>setTimeout(r,3000));
+            Avals.forEach(c=>c.clone.style.opacity=0);
+            Bvals.forEach(c=>c.clone.style.opacity=0);
+            setTimeout(()=>{
+                Avals.forEach(c=>c.kill());
+            Bvals.forEach(c=>c.kill());
+            },500)
             await new Promise(r=>setTimeout(r,800));
         }
     }

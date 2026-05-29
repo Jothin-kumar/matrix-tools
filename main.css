@@ -12,6 +12,7 @@ body {
     user-select: none;
     transition: .3s;
 }
+* {-webkit-tap-highlight-color: transparent; outline: none;}
 
 body>* {
     margin: 0;

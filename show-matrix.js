@@ -1,5 +1,5 @@
 class Matrix {
-    constructor(n,m) {
+    constructor(n,m,editable=false,editCallback=()=>{}) {
         this.n = n;
         this.m = m;
         this.matrix = [];
@@ -14,9 +14,28 @@ class Matrix {
 
             const r_=document.createElement("div");
             for (let j=0;j<m;j++) {
-                const s=document.createElement("span");
+                const s=document.createElement(editable ? "input" : "span");
+                // s.type="number";
+                s.value=0;
                 s.innerText=0;
                 r_.appendChild(s);
+                if (editable) {
+                    s.addEventListener("change",()=>{
+                        let v=parseInt(s.value)%prime;
+                        if (v !=NaN) {
+                            while (v<0) v+=prime;
+                            v%=prime;
+                            this.set(i,j,v)
+                            editCallback();
+                        }
+                        else s.value=this.get(i,j);
+                    });
+                    s.addEventListener("keydown",e=>{
+                        if (e.key=="Enter") {
+                            s.blur();
+                        }
+                    });
+                }
             }
             this.e.appendChild(r_);
         }
@@ -26,6 +45,7 @@ class Matrix {
     }
     set(i,j,v) {
         this.matrix[i][j]=v;
+        this.e.children[i].children[j].value=v;
         this.e.children[i].children[j].innerText=v;
     }
     select(i,j) {

@@ -22,9 +22,9 @@ function mul_matrices(){
         window.mul_matB.revokeParent(document.getElementById("mul-mat-b"));
         window.mul_matRes.revokeParent(document.getElementById("mul-mat-res"));
     }
-    window.mul_matA=new Matrix(m,n);
+    window.mul_matA=new Matrix(m,n,true,compute_mul);
     mul_matA.useParent(document.getElementById("mul-mat-a"));
-    window.mul_matB=new Matrix(n,p);
+    window.mul_matB=new Matrix(n,p,true,compute_mul);
     mul_matB.useParent(document.getElementById("mul-mat-b"));
     window.mul_matRes=new Matrix(m,p);
     mul_matRes.useParent(document.getElementById("mul-mat-res"));

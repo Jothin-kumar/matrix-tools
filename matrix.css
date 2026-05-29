@@ -1,5 +1,4 @@
 .matrix {
-    font-family: monospace;
     /* height: 18rem; */
     /* aspect-ratio: 1/1; */
     display: flex;
@@ -13,7 +12,8 @@
     padding: 5px;
     border-radius: 10px;
     box-sizing: border-box;
-    &>*{
+
+    &>* {
         flex: 1;
         width: 100%;
         align-items: center;
@@ -22,24 +22,37 @@
         padding: 0;
         margin: 0;
         gap: 0;
-    box-sizing: border-box;
-        &>*{
-            flex:1;
+        box-sizing: border-box;
+
+        &>* {
+            flex: 1;
             justify-content: center;
             align-items: center;
             text-align: center;
             border-radius: 50%;
-            background-color: rgba(18, 26, 17,.7);
+            background-color: rgba(18, 26, 17, .7);
+            width: .8rem;
             aspect-ratio: 1/1;
             margin: 5px;
             display: flex;
-    box-sizing: border-box;
+            border: none;
+            box-sizing: border-box;
+            color: white;
+            font-weight: bold;
+            font-family: monospace;
+            font-size: 3rem;
+
             &.highlighted {
-            background-color: rgb(18, 46, 15);
+                background-color: rgb(18, 46, 15);
             }
+
             &.selected {
                 font-weight: bold;
                 color: red;
+            }
+            &:focus {
+                scale: 1.2;
+                border: rgb(18, 46, 15) 1px solid;
             }
         }
     }

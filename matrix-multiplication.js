@@ -17,6 +17,9 @@ class Clone {
         // });
         this.clone.style.backgroundColor="rgba(18, 46, 15, 1)"
         this.clone.style.borderRadius="10px"
+        window.addEventListener("TabChange",()=>{
+            this.clone.style.display=window.currentTab==0?"flex":"none";
+        })
     }
     update(){
         const bcr=this.elem.getBoundingClientRect();

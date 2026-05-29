@@ -6,7 +6,7 @@ class Clone {
         this.clone.style.position="absolute";
         this.clone.style.pointerEvents="none";
         this.clone.style.zIndex=1000;
-        this.clone.style.display="flex";
+        this.clone.style.display=window.currentTab==0?"flex":"none";
         this.clone.style.alignItems="center";
         this.clone.style.justifyContent="center";
         this.clone.innerText=elem.value;

@@ -24,6 +24,10 @@
     color: white;
     border-radius: 10px;
     cursor: pointer;
+    &:disabled {
+        opacity: .5;
+        cursor: unset;
+    }
 }
 #mat-mul-form {
     text-align: left;

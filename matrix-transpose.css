@@ -44,5 +44,6 @@
     cursor: pointer;
     &:disabled {
         opacity: .5;
+        cursor: unset;
     }
 }

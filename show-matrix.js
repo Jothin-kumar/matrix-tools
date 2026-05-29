@@ -93,10 +93,10 @@ class Matrix {
                     this.select(i,j);
                     setTimeout(()=>{
                         this.unselect(i,j);
-                    },500+10000);
+                    },500+7000);
                 }
             }
         }
-        await new Promise(r=>setTimeout(r,10000));
+        await new Promise(r=>setTimeout(r,7000));
     }
 }

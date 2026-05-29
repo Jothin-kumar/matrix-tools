@@ -6,8 +6,8 @@ function compute_mul(){
         for (let j=0;j<p;j++){
             let lol=0;
             for (let k=0;k<n;k++){
-                lol+=(mul_matA.get(i,k)*mul_matB.get(k,j))%mod
-                lol%=mod
+                lol+=(mul_matA.get(i,k)*mul_matB.get(k,j))%prime
+                lol%=prime
             }
             mul_matRes.set(i,j,lol);
         }

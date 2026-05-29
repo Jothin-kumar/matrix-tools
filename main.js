@@ -24,4 +24,4 @@ window.addEventListener("TabChange",()=>{
         }
     }
 });
-const mod=100
+const prime=67

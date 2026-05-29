@@ -8,14 +8,15 @@
     <link rel="stylesheet" href="main.css">
     <link rel="stylesheet" href="matrix.css">
     <link rel="stylesheet" href="matrix-multiplication.css">
+    <link rel="stylesheet" href="matrix-transpose.css">
 </head>
 
 <body>
     <p class="show-on-portrait">Not available on portrait. Switch to landscape mode pls :-)</p>
     <ul id="op-chooser" class="hide-on-portrait">
         <li class="active">Multiplication</li>
+        <li>Transpose</li>
         <li>Determinant</li>
-        <li>Adjoint</li>
         <li>Inverse</li>
     </ul>
     <main id="ops" class="hide-on-portrait">
@@ -63,10 +64,39 @@
             </form>
         </div>
         <div>
-            <h2>Determinant</h2>
+            <h2>Matrix Transpose</h2>
+            <div id="mat-transpose-parent"></div>
+            <p style="text-align: left;">
+                Click on a value to edit it. <strong>Modulo 97 is done to avoid large numbers</strong>
+            </p>
+            <div id="mat-transpose-form">
+                <div>
+                    <div>
+                        <label>Row count:</label>
+                        <select id="mat-transpose-in1">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4" selected>4</option>
+                            <option value="5">5</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label>Column count:</label>
+                        <select id="mat-transpose-in2">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4" selected>4</option>
+                            <option value="5">5</option>
+                        </select>
+                    </div>
+                </div>
+                <button id="mat-transpose-btn">Transpose!</button>
+            </div>
         </div>
         <div>
-            <h2>Adjoint</h2>
+            <h2>Determinant</h2>
         </div>
         <div>
             <h2>Inverse</h2>
@@ -75,6 +105,7 @@
     <script src="main.js"></script>
     <script src="show-matrix.js"></script>
     <script src="matrix-multiplication.js"></script>
+    <script src="matrix-transpose.js"></script>
 </body>
 
 </html>

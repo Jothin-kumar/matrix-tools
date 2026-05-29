@@ -3,7 +3,12 @@ class Matrix {
         this.n = n;
         this.m = m;
         this.matrix = [];
+        this.e_parent=document.createElement("div");
+        this.e_parent.style.height=`${(m>n?m:n)*6}rem`;
+        this.e_parent.style.width=`${(m>n?m:n)*6}rem`;
+        this.e_parent.classList.add("matrix-parent");
         this.e=document.createElement("div");
+        this.e_parent.appendChild(this.e);
         this.e.classList.add("matrix");
         this.e.style.height=`${n*6}rem`;
         this.e.style.width=`${m*6}rem`;
@@ -68,9 +73,23 @@ class Matrix {
         this.e.children[i].children[j].classList.remove("highlighted");
     }
     useParent(e) {
-        e.appendChild(this.e);
+        e.appendChild(this.e_parent);
     }
     revokeParent(e) {
-        e.removeChild(this.e);
+        e.removeChild(this.e_parent);
+    }
+    async transpose() {
+        this.e.classList.toggle("transposed");
+        for (let i=0;i<this.n;i++) {
+            for (let j=0;j<this.m;j++) {
+                if (i!==j) {
+                    this.select(i,j);
+                    setTimeout(()=>{
+                        this.unselect(i,j);
+                    },500+10000);
+                }
+            }
+        }
+        await new Promise(r=>setTimeout(r,10000));
     }
 }

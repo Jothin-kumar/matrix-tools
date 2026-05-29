@@ -1,0 +1,48 @@
+#mat-transpose-parent {
+    display: flex;
+    gap: 10px;
+    font-size: 3rem;
+    align-items: center;
+    justify-content: center;
+}
+@media screen and (max-width:1200px) {
+    #mat-transpose-parent{
+    scale: .7;
+    }
+}
+@media screen and (max-width:900px) {
+    #mat-transpose-parent{
+    scale: .6;
+    }
+}
+#mat-transpose-form {
+    margin-top: 15px;
+    text-align: left;
+    border-left: white 2px solid;
+    padding-left: 10px;
+    &>div>div>select {
+        background-color: black;
+        border: white 1px solid;
+        color: white;
+    font-size: larger;
+    }
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    &>*{
+        flex: 1;
+    }
+}
+#mat-transpose-btn {
+    font-size: large;
+    margin-top: 20px;
+    padding: 10px;
+    background-color: rgb(50, 41, 54);
+    border: white 2px solid;
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+    &:disabled {
+        opacity: .5;
+    }
+}

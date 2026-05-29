@@ -1,3 +1,10 @@
+function isValidNum(s) {
+    if (s.length==0) return false;
+    for (let x of s) {
+        if (!"1234567890".includes(x)) return false;
+    }
+    return true;
+}
 class Matrix {
     constructor(n,m,editable=false,editCallback=()=>{}) {
         this.n = n;
@@ -27,7 +34,7 @@ class Matrix {
                 if (editable) {
                     s.addEventListener("change",()=>{
                         let v=parseInt(s.value)%prime;
-                        if (v !=NaN) {
+                        if (!isNaN(v) && isValidNum(s.value)) {
                             while (v<0) v+=prime;
                             v%=prime;
                             this.set(i,j,v)

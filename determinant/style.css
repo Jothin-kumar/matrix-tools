@@ -6,12 +6,12 @@
     justify-content: center;
 }
 @media screen and (max-width:1200px) {
-    #determinant-parent,.clone{
+    #determinant-parent{
     scale: .7;
     }
 }
 @media screen and (max-width:900px) {
-    #determinant-parent,.clone{
+    #determinant-parent{
     scale: .6;
     }
 }

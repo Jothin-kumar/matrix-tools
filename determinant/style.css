@@ -49,8 +49,10 @@
     }
 }
 #det-calc-steps {
-    font-size: 1.8rem;
+    font-size: 1rem;
     margin-top: 20px;
+    font-weight: bold;
+    font-family: monospace;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -59,4 +61,16 @@
     &>*{
         flex: 1;
     }
+}
+.det-calc-step {
+    width: 4rem;
+    aspect-ratio: 2/1;
+    /* background-color: red; */
+    border-radius: 10px;
+    padding: 10px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    border: white 1px solid;
+    box-sizing: border-box;
 }

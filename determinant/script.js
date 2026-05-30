@@ -88,7 +88,8 @@ function calc_det(){
 }
 function det_matrix(){
     const n=parseInt(document.getElementById("determinant-n-input").value);
-    document.querySelectorAll(".show-on-n3-not-n2").forEach(e=>e.style.display=n==2?"none":"block")
+    document.querySelectorAll(".show-on-n3-not-n2").forEach(e=>e.style.display=n==2?"none":"block");
+    [detCalcStep1_1,detCalcStep1_2,detCalcStep1_3,detCalcStep2_1,detCalcStep2_2,detCalcStep2_3,detCalcStep3 ].forEach(l=>l.set(" "))
     if (window.det_mat){
         window.det_mat.revokeParent(document.getElementById("determinant-parent"));
     }

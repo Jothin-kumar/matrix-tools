@@ -89,7 +89,7 @@ class Matrix {
         this.e.classList.toggle("transposed");
         for (let i=0;i<this.n;i++) {
             for (let j=0;j<this.m;j++) {
-                if (i!==j) {
+                if (i!==j && !(j<this.n && i<this.m && this.get(j,i)===this.get(i,j))) {
                     this.select(i,j);
                     setTimeout(()=>{
                         this.unselect(i,j);

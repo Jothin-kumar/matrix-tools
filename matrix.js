@@ -153,4 +153,10 @@ class Clone {
         clearTimeout(this.timeout);
         this.timeout=null;
     }
+    highlight(i=0,j=0) {
+        this.clone.style.background="rgb(18, 46, 15)"
+    }
+    unhighlight(i=0,j=0) {
+        this.clone.style.background="rgba(18, 26, 17, .7)"
+    }
 }

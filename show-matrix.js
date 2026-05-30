@@ -99,4 +99,20 @@ class Matrix {
         }
         await new Promise(r=>setTimeout(r,7000));
     }
+    disableUserEdit() {
+        for (let i=0;i<this.n;i++){
+            for (let j=0;j<this.m;j++){
+                this.e.children[i].children[j].disabled=true;
+                // this.e.children[i].children[j].readOnly=true;
+            }
+        }
+    }
+    enableUserEdit() {
+        for (let i=0;i<this.n;i++){
+            for (let j=0;j<this.m;j++){
+                this.e.children[i].children[j].disabled=false;
+                // this.e.children[i].children[j].readOnly=false;
+            }
+        }
+    }
 }

@@ -61,6 +61,9 @@
                 scale: 1.2;
                 border: rgb(18, 46, 15) 1px solid;
             }
+            &:disabled {
+                pointer-events: none;
+            }
         }
     }
 }

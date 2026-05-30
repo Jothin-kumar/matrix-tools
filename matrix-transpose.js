@@ -19,9 +19,11 @@ function transpose_matrix(){
 transpose_matrix();
 document.getElementById("mat-transpose-btn").addEventListener("click",async ()=>{
     ["mat-transpose-in1","mat-transpose-in2","mat-transpose-btn"].forEach(id=>document.getElementById(id).disabled=true);
+    t_mat.disableUserEdit()
     const t=document.getElementById("mat-transpose-in2").value;
     document.getElementById("mat-transpose-in2").value=document.getElementById("mat-transpose-in1").value;
     document.getElementById("mat-transpose-in1").value=t;
     await t_mat.transpose();
     ["mat-transpose-in1","mat-transpose-in2","mat-transpose-btn"].forEach(id=>document.getElementById(id).disabled=false);
+    t_mat.enableUserEdit()
 })

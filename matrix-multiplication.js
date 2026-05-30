@@ -100,6 +100,8 @@ mul_matrices();
 
 document.getElementById("mat-mul-animate").addEventListener("click",async ()=>{
     ["mat-mul-in1","mat-mul-in2","mat-mul-in3","mat-mul-animate"].forEach(id=>document.getElementById(id).disabled=true);
+    mul_matA.disableUserEdit()
+    mul_matB.disableUserEdit()
     document.querySelectorAll(".mat-mul-syms").forEach(e=>e.style.opacity=0);
     const m=parseInt(document.getElementById("mat-mul-in1").value);
     const n=parseInt(document.getElementById("mat-mul-in2").value);
@@ -178,4 +180,6 @@ document.getElementById("mat-mul-animate").addEventListener("click",async ()=>{
         }
     }
     ["mat-mul-in1","mat-mul-in2","mat-mul-in3","mat-mul-animate"].forEach(id=>document.getElementById(id).disabled=false);
+    mul_matA.enableUserEdit()
+    mul_matB.enableUserEdit()
 })

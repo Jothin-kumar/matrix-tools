@@ -89,7 +89,7 @@ function calc_det(){
 function det_matrix(){
     const n=parseInt(document.getElementById("determinant-n-input").value);
     document.querySelectorAll(".show-on-n3-not-n2").forEach(e=>e.style.display=n==2?"none":"block");
-    [detCalcStep1_1,detCalcStep1_2,detCalcStep1_3,detCalcStep2_1,detCalcStep2_2,detCalcStep2_3,detCalcStep3 ].forEach(l=>l.set(" "))
+    [detCalcStep1_1,detCalcStep1_2,detCalcStep1_3,detCalcStep2_1,detCalcStep2_2,detCalcStep2_3,detCalcStep3 ].forEach(l=>l.set("?"))
     if (window.det_mat){
         window.det_mat.revokeParent(document.getElementById("determinant-parent"));
     }
@@ -108,7 +108,7 @@ det_matrix();
 document.getElementById("determinant-btn").addEventListener("click",async ()=>{
     ["determinant-n-input","determinant-btn"].forEach(id=>document.getElementById(id).disabled=true);    
     det_mat.disableUserEdit();
-    [detCalcStep1_1,detCalcStep1_2,detCalcStep1_3,detCalcStep2_1,detCalcStep2_2,detCalcStep2_3,detCalcStep3 ].forEach(l=>l.set(" "))
+    [detCalcStep1_1,detCalcStep1_2,detCalcStep1_3,detCalcStep2_1,detCalcStep2_2,detCalcStep2_3,detCalcStep3 ].forEach(l=>l.set("?"))
     await new Promise(r=>setTimeout(r,800))
     const n=det_mat.n
     if (n===2) {

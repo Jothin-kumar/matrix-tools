@@ -1,42 +1,3 @@
-class Clone {
-    constructor(elem) {
-        this.elem=elem;
-        this.clone=document.createElement("span");
-        this.clone.classList.add("clone");
-        this.clone.style.position="absolute";
-        this.clone.style.pointerEvents="none";
-        this.clone.style.zIndex=1000;
-        this.clone.style.display=window.currentTab==0?"flex":"none";
-        this.clone.style.alignItems="center";
-        this.clone.style.justifyContent="center";
-        this.clone.innerText=elem.value;
-        this.update();
-        document.body.appendChild(this.clone);
-        // window.addEventListener("resize",()=>{
-        //     setTimeout(()=>this.update,100)
-        // });
-        this.clone.style.backgroundColor="rgba(18, 46, 15, 1)"
-        this.clone.style.borderRadius="10px"
-        window.addEventListener("TabChange",()=>{
-            this.clone.style.display=window.currentTab==0?"flex":"none";
-        })
-    }
-    update(){
-        const bcr=this.elem.getBoundingClientRect();
-        this.clone.style.width=bcr.width+"px";
-        this.clone.style.height=bcr.height+"px";
-        this.clone.style.left=bcr.left+"px";
-        this.clone.style.top=bcr.top+"px";
-        this.clone.style.font=window.getComputedStyle(this.elem).font;
-        this.clone.style.fontSize=window.getComputedStyle(this.elem).fontSize;
-        this.timeout=setTimeout(()=>this.update(),100);
-    }
-    kill(){
-        document.body.removeChild(this.clone);
-        clearTimeout(this.timeout);
-        this.timeout=null;
-    }
-}
 function mergeClones(c1,c2) {
     const f=()=>{
         let mid=(c1.elem.parentElement.parentElement.getBoundingClientRect().right+c2.elem.parentElement.parentElement.getBoundingClientRect().left)/2;
@@ -126,8 +87,8 @@ document.getElementById("mat-mul-animate").addEventListener("click",async ()=>{
             for (let k=0;k<n;k++){
                 mul_matA.highlight(i,k);
                 mul_matB.highlight(k,j);
-                Avals.push(new Clone(mul_matA.e.children[i].children[k]));
-                Bvals.push(new Clone(mul_matB.e.children[k].children[j]));
+                Avals.push(new Clone(mul_matA.e.children[i].children[k],0));
+                Bvals.push(new Clone(mul_matB.e.children[k].children[j],0));
                 lol+=(mul_matA.get(i,k)*mul_matB.get(k,j))%prime
                 lol%=prime
             }

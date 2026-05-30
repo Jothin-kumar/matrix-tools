@@ -116,3 +116,41 @@ class Matrix {
         }
     }
 }
+
+class Clone {
+    constructor(elem,masterTab) {
+        this.masterTab=masterTab
+        this.elem=elem;
+        this.clone=document.createElement("span");
+        this.clone.classList.add("clone");
+        this.clone.style.position="absolute";
+        this.clone.style.pointerEvents="none";
+        this.clone.style.zIndex=1000;
+        this.clone.style.display=window.currentTab==this.masterTab?"flex":"none";
+        this.clone.style.alignItems="center";
+        this.clone.style.justifyContent="center";
+        this.clone.innerText=elem.value;
+        this.update();
+        document.body.appendChild(this.clone);
+        this.clone.style.backgroundColor="rgba(18, 46, 15, 1)"
+        this.clone.style.borderRadius="10px"
+        window.addEventListener("TabChange",()=>{
+            this.clone.style.display=window.currentTab==this.masterTab?"flex":"none";
+        })
+    }
+    update(){
+        const bcr=this.elem.getBoundingClientRect();
+        this.clone.style.width=bcr.width+"px";
+        this.clone.style.height=bcr.height+"px";
+        this.clone.style.left=bcr.left+"px";
+        this.clone.style.top=bcr.top+"px";
+        this.clone.style.font=window.getComputedStyle(this.elem).font;
+        this.clone.style.fontSize=window.getComputedStyle(this.elem).fontSize;
+        this.timeout=setTimeout(()=>this.update(),100);
+    }
+    kill(){
+        document.body.removeChild(this.clone);
+        clearTimeout(this.timeout);
+        this.timeout=null;
+    }
+}

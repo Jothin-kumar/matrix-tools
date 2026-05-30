@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="matrix.css">
     <link rel="stylesheet" href="multiplication/style.css">
     <link rel="stylesheet" href="transpose/style.css">
+    <link rel="stylesheet" href="determinant/style.css">
 </head>
 
 <body>
@@ -97,6 +98,32 @@
         </div>
         <div>
             <h2>Determinant</h2>
+            <div id="determinant-parent"></div>
+            <div id="determinant-result"></div>
+            <div id="det-calc-steps">
+                <span>&plus;</span>
+                <span id="det-calc-step-1"></span>
+                <span class="show-on-n3-not-n2">&plus;</span>
+                <span class="show-on-n3-not-n2" id="det-calc-step-1-2"></span>
+                <span class="show-on-n3-not-n2">&plus;</span>
+                <span class="show-on-n3-not-n2" id="det-calc-step-1-3"></span>
+                <span>&minus;</span>
+                <span id="det-calc-step-2"></span>
+                <span class="show-on-n3-not-n2">&minus;</span>
+                <span class="show-on-n3-not-n2" id="det-calc-step-2-2"></span>
+                <span class="show-on-n3-not-n2">&minus;</span>
+                <span class="show-on-n3-not-n2" id="det-calc-step-2-3"></span>
+                <span>&equals;</span>
+                <span id="det-calc-step-3"></span>
+            </div>
+            <button id="determinant-btn">Animate!</button>
+            <div id="determinant-form">
+                <label>row/column count:</label>
+                <select id="determinant-n-input">
+                    <option value="2">2</option>
+                    <option value="3" selected>3</option>
+                </select>
+            </div>
         </div>
         <div>
             <h2>Inverse</h2>
@@ -106,6 +133,7 @@
     <script src="matrix.js"></script>
     <script src="multiplication/script.js"></script>
     <script src="transpose/script.js"></script>
+    <script src="determinant/script.js"></script>
 </body>
 
 </html>

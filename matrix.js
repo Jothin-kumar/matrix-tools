@@ -143,7 +143,7 @@ class Clone {
         this.clone.style.width=bcr.width+"px";
         this.clone.style.height=bcr.height+"px";
         this.clone.style.left=bcr.left+"px";
-        this.clone.style.top=bcr.top+"px";
+        this.clone.style.top=bcr.top+window.scrollY+"px";
         this.clone.style.font=window.getComputedStyle(this.elem).font;
         this.clone.style.fontSize=window.getComputedStyle(this.elem).fontSize;
         this.timeout=setTimeout(()=>this.update(),100);
